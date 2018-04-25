@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">25550</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="enter_your_date_of_birth">enter your date of birth</string>
+
+    <!--month-->
+    <string name="jan">jan</string>
+    <string name="feb">feb</string>
+    <string name="mar">mar</string>
+    <string name="apr">apr</string>
+    <string name="may">may</string>
+    <string name="jun">jun</string>
+    <string name="jul">jul</string>
+    <string name="aug">aug</string>
+    <string name="sep">sep</string>
+    <string name="okt">okt</string>
+    <string name="nov">nov</string>
+    <string name="dec">dec</string>
+    <string name="lets_go">let\'s go!</string>
 </resources>

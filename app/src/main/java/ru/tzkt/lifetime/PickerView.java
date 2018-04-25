@@ -9,6 +9,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -20,11 +21,7 @@ import android.widget.Scroller;
 
 import java.util.ArrayList;
 
-/**
- * 滚轮视图，可设置是否循环模式，实现OnScrollChangedListener接口以监听滚轮变化
- * Created by huzn on 2016/10/27.
- */
-public class EasyPickerView extends View {
+public class PickerView extends View {
 
     private int textSize;
     private int textColor;
@@ -59,33 +56,34 @@ public class EasyPickerView extends View {
     private float bounceDistance;
     private boolean isSliding = false;
 
-    public EasyPickerView(Context context) {
+    public PickerView(Context context) {
         this(context, null);
     }
 
-    public EasyPickerView(Context context, AttributeSet attrs) {
+    public PickerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public EasyPickerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PickerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.EasyPickerView, defStyleAttr, 0);
-        textSize = a.getDimensionPixelSize(R.styleable.EasyPickerView_epvTextSize, (int) TypedValue.applyDimension(
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PickerView, defStyleAttr, 0);
+        textSize = a.getDimensionPixelSize(R.styleable.PickerView_epvTextSize, (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
-        textColor = a.getColor(R.styleable.EasyPickerView_epvTextColor, Color.BLACK);
-        textPadding = a.getDimensionPixelSize(R.styleable.EasyPickerView_epvTextPadding, (int) TypedValue.applyDimension(
+        textColor = a.getColor(R.styleable.PickerView_epvTextColor, Color.BLACK);
+        textPadding = a.getDimensionPixelSize(R.styleable.PickerView_epvTextPadding, (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()));
-        textMaxScale = a.getFloat(R.styleable.EasyPickerView_epvTextMaxScale, 2.0f);
-        textMinAlpha = a.getFloat(R.styleable.EasyPickerView_epvTextMinAlpha, 0.4f);
-        isRecycleMode = a.getBoolean(R.styleable.EasyPickerView_epvRecycleMode, true);
-        maxShowNum = a.getInteger(R.styleable.EasyPickerView_epvMaxShowNum, 3);
+        textMaxScale = a.getFloat(R.styleable.PickerView_epvTextMaxScale, 2.0f);
+        textMinAlpha = a.getFloat(R.styleable.PickerView_epvTextMinAlpha, 0.4f);
+        isRecycleMode = a.getBoolean(R.styleable.PickerView_epvRecycleMode, true);
+        maxShowNum = a.getInteger(R.styleable.PickerView_epvMaxShowNum, 3);
         a.recycle();
 
         textPaint = new TextPaint();
         textPaint.setColor(textColor);
         textPaint.setTextSize(textSize);
         textPaint.setAntiAlias(true);
+        textPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Medium.ttf"));
         fm = textPaint.getFontMetrics();
         textHeight = (int) (fm.bottom - fm.top);
 
@@ -153,7 +151,6 @@ public class EasyPickerView extends View {
                     finishScroll();
                 }
 
-                // 没有滑动，则判断点击事件
                 if (!isSliding) {
                     if (downY < contentHeight / 3)
                         moveBy(-1);
