@@ -2,11 +2,14 @@ package ru.tzkt.lifetime
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+
+        epvh.setDataList(arrayListOf("1", "2", "3", "4", "5"))
     }
 }
