@@ -20,6 +20,20 @@ class WelcomeActivity : AppCompatActivity() {
 
 
     private val months by lazy { getArrayListFromArray(R.array.months) }
+    private val years by lazy {
+
+        val years = ArrayList<String>()
+
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        for (i in (year downTo (year - 75))) {
+            years.add(i.toString())
+        }
+
+        return@lazy years
+    }
+
+    private val days by lazy { getArrayListFromArray(R.array.days_of_month_31) }
+
 
     private val listener = object : PickerView.OnScrollChangedListener {
         override fun onScrollChanged(curIndex: Int) {
@@ -36,9 +50,9 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        pvDay.setDataList(getArrayListFromArray(R.array.days_of_month_31))
+        pvDay.setDataList(days)
         pvMonth.setDataList(months)
-        pvYear.setDataList(getYearsArrayList())
+        pvYear.setDataList(years)
 
         pvDay.setOnScrollChangedListener(listener)
         pvMonth.setOnScrollChangedListener(listener)
@@ -55,40 +69,26 @@ class WelcomeActivity : AppCompatActivity() {
         btnLetsGo.typeface = tfMedium
         btnLetsGo.setOnClickListener {
 
+            saveDate()
+
             val i = Intent(this, ResultActivity::class.java)
-            i.putExtra(ResultActivity.SELECTED_DATE_ARG, 9000)
             startActivity(i) }
 
     }
 
-    fun getLivedDays(): Int {
-        val thatDay = Calendar.getInstance()
-        thatDay.set(Calendar.DAY_OF_MONTH, 25)
-        thatDay.set(Calendar.MONTH, 7) // 0-11 so 1 less
-        thatDay.set(Calendar.YEAR, 1985)
 
-        val today = Calendar.getInstance()
+    private fun saveDate() {
+        val dateOfBirth = Calendar.getInstance()
+        dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(days[pvDay.curIndex]))
+        dateOfBirth.set(Calendar.MONTH, pvMonth.curIndex + 1)
+        dateOfBirth.set(Calendar.YEAR, Integer.parseInt(years[pvYear.curIndex]))
 
-        val diff = today.timeInMillis - thatDay.timeInMillis
+        Utils.saveDate(this, dateOfBirth)
 
-        return (diff / (24 * 60 * 60 * 1000)).toInt()
     }
 
     private fun getArrayListFromArray(id: Int): ArrayList<String> {
         return resources.getStringArray(id).toCollection(ArrayList())
-    }
-
-    private fun getYearsArrayList(): ArrayList<String> {
-
-        val years = ArrayList<String>()
-
-        val year = Calendar.getInstance().get(Calendar.YEAR)
-        for (i in (year downTo (year - 75))) {
-            years.add(i.toString())
-        }
-
-        return years
-
     }
 
     fun vibrate(c: Context) {
