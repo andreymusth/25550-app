@@ -35,7 +35,7 @@ class Utils {
 
         fun getDate(ctx: Context): Calendar {
             val preferences = ctx.getSharedPreferences(SAVED_DATE_PREF, MODE_PRIVATE)
-            val stringDate = preferences.getString(SAVED_DATE_PREF, "0.0.0")
+            val stringDate = preferences.getString(SAVED_DATE_PREF, "01.01.1812")
 
             val cal = Calendar.getInstance()
             val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH)

@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_welcome.*
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -18,21 +20,22 @@ class WelcomeActivity : AppCompatActivity() {
         const val VIBRATION_DURATION = 10L
     }
 
-
     private val months by lazy { getArrayListFromArray(R.array.months) }
     private val years by lazy {
 
         val years = ArrayList<String>()
 
         val year = Calendar.getInstance().get(Calendar.YEAR)
-        for (i in (year downTo (year - 75))) {
+        for (i in ((year - 75)..year)) {
             years.add(i.toString())
         }
 
         return@lazy years
     }
 
-    private val days by lazy { getArrayListFromArray(R.array.days_of_month_31) }
+    private val days31 by lazy { getArrayListFromArray(R.array.days_of_month_31) }
+    private val days30 by lazy { getArrayListFromArray(R.array.days_of_month_30) }
+    private val days29 by lazy { getArrayListFromArray(R.array.days_of_month_29) }
 
 
     private val listener = object : PickerView.OnScrollChangedListener {
@@ -50,7 +53,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        pvDay.setDataList(days)
+        pvDay.setDataList(days31)
         pvMonth.setDataList(months)
         pvYear.setDataList(years)
 
@@ -72,14 +75,32 @@ class WelcomeActivity : AppCompatActivity() {
             saveDate()
 
             val i = Intent(this, ResultActivity::class.java)
-            startActivity(i) }
+            startActivity(i)
+        }
 
     }
 
 
+    override fun onResume() {
+        super.onResume()
+
+        val animWithoutOffset = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+
+        tvWelcomeText.startAnimation(animWithoutOffset)
+        tvAppName.startAnimation(animWithoutOffset)
+
+
+        val anim1 = AnimationUtils.loadAnimation(this, R.anim.fade_in_1)
+        tvEnterDateOfBirth.startAnimation(anim1)
+        llPicker.startAnimation(anim1)
+
+        val anim2 = AnimationUtils.loadAnimation(this, R.anim.fade_in_2)
+        btnLetsGo.startAnimation(anim2)
+    }
+
     private fun saveDate() {
         val dateOfBirth = Calendar.getInstance()
-        dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(days[pvDay.curIndex]))
+        dateOfBirth.set(Calendar.DAY_OF_MONTH, Integer.parseInt(days31[pvDay.curIndex]))
         dateOfBirth.set(Calendar.MONTH, pvMonth.curIndex + 1)
         dateOfBirth.set(Calendar.YEAR, Integer.parseInt(years[pvYear.curIndex]))
 

@@ -7,12 +7,50 @@
     android:background="@drawable/bg"
     tools:context="ru.tzkt.lifetime.ResultActivity">
 
+    <ImageView
+        android:id="@+id/ivLifeLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/life_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <FrameLayout
+        android:id="@+id/flReset"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/ivMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/marker"
+        app:layout_constraintBottom_toTopOf="@+id/ivLifeLine"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvLivedPercent"
@@ -22,9 +60,10 @@
         android:layout_marginTop="52dp"
         android:gravity="end"
         android:textColor="@android:color/white"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="44%" />
 
     <TextView
         android:id="@+id/tvLivedDays"
@@ -32,9 +71,10 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:textColor="@android:color/white"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/tvLivedPercent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLivedPercent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLivedPercent"
+        tools:text="16896" />
 
     <TextView
         android:id="@+id/tvLeftDays"
@@ -43,8 +83,8 @@
         android:layout_marginBottom="52dp"
         android:layout_marginStart="32dp"
         android:gravity="start"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -53,8 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/tvLeftDays"
         app:layout_constraintStart_toStartOf="@+id/tvLeftDays" />
 
