@@ -35,7 +35,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun getLeftDaysString(daysLived: Int): String {
-        return "$daysLived days more"
+        return "${25550 - daysLived} days more"
     }
 
     private fun getLivedDaysString(daysLived: Int): String {
