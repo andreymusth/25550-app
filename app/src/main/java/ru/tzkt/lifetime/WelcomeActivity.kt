@@ -58,8 +58,32 @@ class WelcomeActivity : AppCompatActivity() {
         pvYear.setDataList(years)
 
         pvDay.setOnScrollChangedListener(listener)
-        pvMonth.setOnScrollChangedListener(listener)
         pvYear.setOnScrollChangedListener(listener)
+
+        pvYear.moveTo(years.indexOf("2000"))
+        pvMonth.setOnScrollChangedListener(object : PickerView.OnScrollChangedListener {
+            override fun onScrollChanged(curIndex: Int) {
+                vibrate(this@WelcomeActivity)
+            }
+
+            override fun onScrollFinished(curIndex: Int) {
+                vibrate(this@WelcomeActivity)
+
+                when (curIndex) {
+                    0,2,4,6,7,9,11 -> {
+                        pvDay.setDataList(days31)
+                    }
+                    1 -> {
+                        pvDay.setDataList(days29)
+                    }
+                    3,5,8,10 -> {
+                        pvDay.setDataList(days30)
+                    }
+                }
+
+            }
+
+        })
 
 
         val tfMedium = Typeface.createFromAsset(assets,"fonts/Montserrat-Medium.ttf")
