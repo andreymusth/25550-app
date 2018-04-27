@@ -17,4 +17,11 @@
     <string name="nov">nov</string>
     <string name="dec">dec</string>
     <string name="lets_go">let\'s go!</string>
+
+
+    <string name="days_lived_percent">wasted %s</string>
+    <string name="days_lived">and %d days</string>
+
+    <string name="days_left_percent">you have %s</string>
+    <string name="days_left">and %d days more</string>
 </resources>

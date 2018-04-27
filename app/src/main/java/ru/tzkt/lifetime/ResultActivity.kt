@@ -73,22 +73,23 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun getLeftPercentString(daysLived: Int): String {
+
         val percent = "%.3f".format(100 - daysLived.toFloat() / 25550 * 100)
-        return "$percent %"
+        return String.format(getString(R.string.days_left_percent), percent) + "%"
     }
 
     private fun getLeftDaysString(daysLived: Int): String {
-        return "and ${25550 - daysLived} days more"
+        return String.format(getString(R.string.days_left), 25550 - daysLived)
     }
 
     private fun getLivedDaysString(daysLived: Int): String {
-        return "and $daysLived days"
+        return String.format(getString(R.string.days_lived), daysLived )
 
     }
 
     private fun getLivedPercentString(daysLived: Int): String {
         val percent = "%.3f".format(daysLived.toFloat() / 25550 * 100)
-        return "$percent %"
+        return String.format(getString(R.string.days_lived_percent), percent) + "%"
     }
 
 }
