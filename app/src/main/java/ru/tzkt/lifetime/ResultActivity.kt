@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateOvershootInterpolator
+import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_result.*
 import java.util.*
 
@@ -69,6 +70,9 @@ class ResultActivity : AppCompatActivity() {
         flReset.setOnClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
         }
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
     }
 

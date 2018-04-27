@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">25550</string>
+    <string name="welcome_to">Willkommen zurück</string>
+    <string name="enter_your_date_of_birth">geben sie ihr geburtsdatum ein</string>
+
+
+    <!--Januar Februar März April Mai Juni Juli August September Oktober Novemberma Dezember-->
+    <!--январь февраль март апрель май июнь июль август сентябрь октябрь ноябрьma декабрь-->
+    <!--month-->
+    <string name="jan">jan</string>
+    <string name="feb">feb</string>
+    <string name="mar">mär</string>
+    <string name="apr">apr</string>
+    <string name="may">mai</string>
+    <string name="jun">jun</string>
+    <string name="jul">jul</string>
+    <string name="aug">aug</string>
+    <string name="sep">sep</string>
+    <string name="okt">okt</string>
+    <string name="nov">nov</string>
+    <string name="dec">dez</string>
+    <string name="lets_go">lass uns gehen!</string>
+
+
+    <string name="days_lived_percent">verschwendet %s</string>
+    <string name="days_lived">und %d tage</string>
+
+    <string name="days_left_percent">du hast %s</string>
+    <string name="days_left">und weitere %d tage</string>
+
+    <string name="ad_mob_address">ca-app-pub-5626828738405382~1990276979</string>
+    <string name="test_address">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

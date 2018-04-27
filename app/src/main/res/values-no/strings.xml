@@ -1,29 +1,31 @@
 <resources>
     <string name="app_name">25550</string>
-    <string name="welcome_to">Welcome to</string>
-    <string name="enter_your_date_of_birth">enter your date of birth</string>
+    <string name="welcome_to">Velkommen til</string>
+    <string name="enter_your_date_of_birth">skriv inn fødselsdatoen din</string>
 
+
+    <!--Januar Februar Mars April Mai Juni Juli August September Oktober Novemberma Desember-->
     <!--month-->
     <string name="jan">jan</string>
     <string name="feb">feb</string>
     <string name="mar">mar</string>
     <string name="apr">apr</string>
-    <string name="may">may</string>
+    <string name="may">mai</string>
     <string name="jun">jun</string>
     <string name="jul">jul</string>
     <string name="aug">aug</string>
     <string name="sep">sep</string>
     <string name="okt">okt</string>
     <string name="nov">nov</string>
-    <string name="dec">dec</string>
-    <string name="lets_go">let\'s go!</string>
+    <string name="dec">des</string>
+    <string name="lets_go">la oss gå!</string>
 
 
-    <string name="days_lived_percent">wasted %s</string>
-    <string name="days_lived">and %d days</string>
+    <string name="days_lived_percent">drita full %s</string>
+    <string name="days_lived">og %d dager</string>
 
-    <string name="days_left_percent">you have %s</string>
-    <string name="days_left">and %d days more</string>
+    <string name="days_left_percent">du har %s</string>
+    <string name="days_left">og %d dager mer</string>
 
     <string name="ad_mob_address">ca-app-pub-5626828738405382~1990276979</string>
     <string name="test_address">ca-app-pub-3940256099942544/6300978111</string>

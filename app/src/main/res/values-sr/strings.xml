@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">25550</string>
+    <string name="welcome_to">Добро дошли</string>
+    <string name="enter_your_date_of_birth">унесите датум рођења</string>
+
+    <!--Јануар Фебруар Март Април Мај Јун Јул Август Септембар Октобар Новембар Децембар-->
+    <!--month-->
+    <string name="jan">jан</string>
+    <string name="feb">феб</string>
+    <string name="mar">мар</string>
+    <string name="apr">апр</string>
+    <string name="may">маj</string>
+    <string name="jun">jун</string>
+    <string name="jul">jул</string>
+    <string name="aug">авг</string>
+    <string name="sep">сеп</string>
+    <string name="okt">окт</string>
+    <string name="nov">нов</string>
+    <string name="dec">дец</string>
+    <string name="lets_go">Идемо!</string>
+
+
+    <string name="days_lived_percent">потрошено %s</string>
+    <string name="days_lived">и %d дана</string>
+
+    <string name="days_left_percent">имаш %s</string>
+    <string name="days_left">и још %d дана</string>
+
+    <string name="ad_mob_address">ca-app-pub-5626828738405382~1990276979</string>
+    <string name="test_address">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

@@ -137,10 +137,10 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     fun vibrate(c: Context) {
-        if (Build.VERSION.SDK_INT >= 26) {
-            (c.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else {
-            (c.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(VIBRATION_DURATION)
-        }
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            (c.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(VibrationEffect.createOneShot(VIBRATION_DURATION, VibrationEffect.DEFAULT_AMPLITUDE))
+//        } else {
+//            (c.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator).vibrate(VIBRATION_DURATION)
+//        }
     }
 }

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">25550</string>
+    <string name="welcome_to">Bienvenue à</string>
+    <string name="enter_your_date_of_birth">entrez votre date de naissance</string>
+
+
+    <!--Janvier Février Mars Avril Mai Juin Juillet Août Septembre Octobre Novembre Décembre-->
+    <!--month-->
+    <string name="jan">jan</string>
+    <string name="fév">feb</string>
+    <string name="mar">mar</string>
+    <string name="avr">apr</string>
+    <string name="mai">may</string>
+    <string name="jui">jun</string>
+    <string name="jul">jul</string>
+    <string name="aug">aoû</string>
+    <string name="sep">sep</string>
+    <string name="okt">okt</string>
+    <string name="nov">nov</string>
+    <string name="dec">déc</string>
+    <string name="lets_go">allons-y!</string>
+
+
+    <string name="days_lived_percent">perdu %s</string>
+    <string name="days_lived">et %d jours</string>
+
+    <string name="days_left_percent">tu as %s</string>
+    <string name="days_left">et %d jours de plus</string>
+
+    <string name="ad_mob_address">ca-app-pub-5626828738405382~1990276979</string>
+    <string name="test_address">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
