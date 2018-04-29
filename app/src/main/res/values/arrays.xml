@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string-array name="months">
+    <string-array name="months" translatable="false">
 
         <item>@string/jan</item>
         <item>@string/feb</item>
@@ -20,7 +20,7 @@
     </string-array>
 
 
-    <string-array name="days_of_month_29">
+    <string-array name="days_of_month_29" translatable="false">
 
         <item>1</item>
         <item>2</item>
@@ -55,7 +55,7 @@
     </string-array>
 
 
-    <string-array name="days_of_month_30">
+    <string-array name="days_of_month_30" translatable="false">
 
         <item>1</item>
         <item>2</item>
@@ -90,7 +90,7 @@
 
     </string-array>
 
-    <string-array name="days_of_month_31">
+    <string-array name="days_of_month_31" translatable="false">
 
         <item>1</item>
         <item>2</item>

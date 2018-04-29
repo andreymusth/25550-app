@@ -38,16 +38,8 @@ class WelcomeActivity : AppCompatActivity() {
     private val days29 by lazy { getArrayListFromArray(R.array.days_of_month_29) }
 
 
-    private val listener = object : PickerView.OnScrollChangedListener {
-        override fun onScrollChanged(curIndex: Int) {
-            vibrate(this@WelcomeActivity)
-        }
-
-        override fun onScrollFinished(curIndex: Int) {
-            vibrate(this@WelcomeActivity)
-        }
-
-    }
+    private var currentDay = "1"
+    private var currentArrayList: ArrayList<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +49,18 @@ class WelcomeActivity : AppCompatActivity() {
         pvMonth.setDataList(months)
         pvYear.setDataList(years)
 
-        pvDay.setOnScrollChangedListener(listener)
-        pvYear.setOnScrollChangedListener(listener)
+        currentArrayList = days31
+
+        pvDay.setOnScrollChangedListener(object : PickerView.OnScrollChangedListener {
+            override fun onScrollChanged(curIndex: Int) {
+
+            }
+
+            override fun onScrollFinished(curIndex: Int) {
+                currentDay = currentArrayList!![curIndex]
+            }
+
+        })
 
         pvYear.moveTo(years.indexOf("2000"))
         pvMonth.setOnScrollChangedListener(object : PickerView.OnScrollChangedListener {
@@ -72,12 +74,24 @@ class WelcomeActivity : AppCompatActivity() {
                 when (curIndex) {
                     0,2,4,6,7,9,11 -> {
                         pvDay.setDataList(days31)
+                        currentArrayList = days31
+                        if (currentArrayList!!.contains(currentDay)) {
+                            pvDay.moveTo(currentArrayList!!.indexOf(currentDay))
+                        }
                     }
                     1 -> {
                         pvDay.setDataList(days29)
+                        currentArrayList = days29
+                        if (currentArrayList!!.contains(currentDay)) {
+                            pvDay.moveTo(currentArrayList!!.indexOf(currentDay))
+                        }
                     }
                     3,5,8,10 -> {
                         pvDay.setDataList(days30)
+                        currentArrayList = days30
+                        if (currentArrayList!!.contains(currentDay)) {
+                            pvDay.moveTo(currentArrayList!!.indexOf(currentDay))
+                        }
                     }
                 }
 

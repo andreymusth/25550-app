@@ -25,7 +25,4 @@
 
     <string name="days_left_percent">du har %s</string>
     <string name="days_left">och %d dagar mer</string>
-
-    <string name="ad_mob_address">ca-app-pub-5626828738405382~1990276979</string>
-    <string name="test_address">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
