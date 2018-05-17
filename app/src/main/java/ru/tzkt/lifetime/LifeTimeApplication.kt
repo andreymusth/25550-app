@@ -6,7 +6,7 @@ import com.google.android.gms.ads.MobileAds
 /**
  * Created by andrey on 28/04/2018.
  */
-class LifeTime: Application() {
+class LifeTimeApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()

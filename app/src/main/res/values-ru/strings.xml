@@ -24,4 +24,5 @@
 
     <string name="days_left_percent">у тебя есть %s</string>
     <string name="days_left">и еще %d дней</string>
+    <string name="minus_one">минус один</string>
 </resources>

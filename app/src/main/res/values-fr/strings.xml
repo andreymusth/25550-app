@@ -26,4 +26,5 @@
 
     <string name="days_left_percent">tu as %s</string>
     <string name="days_left">et %d jours de plus</string>
+    <string name="minus_one">minus one</string>
 </resources>

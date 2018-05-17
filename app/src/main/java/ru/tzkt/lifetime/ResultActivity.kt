@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateOvershootInterpolator
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.activity_result.*
+import ru.tzkt.lifetime.utils.Utils
 import java.util.*
 
 class ResultActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+        Utils.scheduleJob(this)
 
         if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||

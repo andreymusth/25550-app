@@ -3,13 +3,11 @@ package ru.tzkt.lifetime
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_welcome.*
+import ru.tzkt.lifetime.utils.Utils
 import java.util.*
 import kotlin.collections.ArrayList
 

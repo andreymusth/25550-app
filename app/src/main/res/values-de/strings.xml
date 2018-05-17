@@ -27,4 +27,5 @@
 
     <string name="days_left_percent">du hast %s</string>
     <string name="days_left">und weitere %d tage</string>
+    <string name="minus_one">minus one</string>
 </resources>
