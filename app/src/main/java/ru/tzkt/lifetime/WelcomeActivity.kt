@@ -3,14 +3,14 @@ package ru.tzkt.lifetime
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_welcome.*
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import ru.tzkt.lifetime.utils.Utils
 import java.util.*
-import kotlin.collections.ArrayList
-
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -34,7 +34,14 @@ class WelcomeActivity : AppCompatActivity() {
     private val days31 by lazy { getArrayListFromArray(R.array.days_of_month_31) }
     private val days30 by lazy { getArrayListFromArray(R.array.days_of_month_30) }
     private val days29 by lazy { getArrayListFromArray(R.array.days_of_month_29) }
-
+    private val pvDay: PickerView by lazy { findViewById(R.id.pvDay) }
+    private val pvMonth: PickerView by lazy { findViewById(R.id.pvMonth) }
+    private val pvYear: PickerView by lazy { findViewById(R.id.pvYear) }
+    private val tvWelcomeText: TextView by lazy { findViewById(R.id.tvWelcomeText) }
+    private val tvAppName: TextView by lazy { findViewById(R.id.tvAppName) }
+    private val tvEnterDateOfBirth: TextView by lazy { findViewById(R.id.tvEnterDateOfBirth) }
+    private val btnLetsGo: Button by lazy { findViewById(R.id.btnLetsGo) }
+    private val llPicker: LinearLayout by lazy { findViewById(R.id.llPicker) }
 
     private var currentDay = "1"
     private var currentArrayList: ArrayList<String>? = null
@@ -70,7 +77,7 @@ class WelcomeActivity : AppCompatActivity() {
                 vibrate(this@WelcomeActivity)
 
                 when (curIndex) {
-                    0,2,4,6,7,9,11 -> {
+                    0, 2, 4, 6, 7, 9, 11 -> {
                         pvDay.setDataList(days31)
                         currentArrayList = days31
                         if (currentArrayList!!.contains(currentDay)) {
@@ -84,7 +91,7 @@ class WelcomeActivity : AppCompatActivity() {
                             pvDay.moveTo(currentArrayList!!.indexOf(currentDay))
                         }
                     }
-                    3,5,8,10 -> {
+                    3, 5, 8, 10 -> {
                         pvDay.setDataList(days30)
                         currentArrayList = days30
                         if (currentArrayList!!.contains(currentDay)) {
@@ -98,8 +105,8 @@ class WelcomeActivity : AppCompatActivity() {
         })
 
 
-        val tfMedium = Typeface.createFromAsset(assets,"fonts/Montserrat-Medium.ttf")
-        val tvLight = Typeface.createFromAsset(assets,"fonts/Montserrat-Light.ttf")
+        val tfMedium = Typeface.createFromAsset(assets, "fonts/Montserrat-Medium.ttf")
+        val tvLight = Typeface.createFromAsset(assets, "fonts/Montserrat-Light.ttf")
 
         tvWelcomeText.typeface = tfMedium
         tvAppName.typeface = tfMedium

@@ -4,30 +4,46 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Typeface
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateOvershootInterpolator
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdRequest
-import kotlinx.android.synthetic.main.activity_result.*
+import com.google.android.gms.ads.AdView
 import ru.tzkt.lifetime.utils.Utils
 import java.util.*
 
 class ResultActivity : AppCompatActivity() {
 
+    private val tvLivedDays: TextView by lazy { findViewById(R.id.tvLivedDays) }
+    private val tvLivedPercent: TextView by lazy { findViewById(R.id.tvLivedPercent) }
+    private val tvLeftDays: TextView by lazy { findViewById(R.id.tvLeftDays) }
+    private val tvLeftPercent: TextView by lazy { findViewById(R.id.tvLeftPercent) }
+    private val adView: AdView by lazy { findViewById(R.id.adView) }
+    private val ivMarker: ImageView by lazy { findViewById(R.id.ivMarker) }
+    private val ivLifeLine: ImageView by lazy { findViewById(R.id.ivLifeLine) }
+    private val flReset: FrameLayout by lazy { findViewById(R.id.flReset) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         Utils.scheduleJob(this)
 
-        if (ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.INTERNET
+            ) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_NETWORK_STATE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
 
             requestPermissions()
         }
@@ -41,7 +57,7 @@ class ResultActivity : AppCompatActivity() {
 
         val daysLived = Utils.getLivedDays(date)
 
-        val tf =  Typeface.createFromAsset(assets,"fonts/Montserrat-Medium.ttf")
+        val tf = Typeface.createFromAsset(assets, "fonts/Montserrat-Medium.ttf")
 
         tvLivedDays.typeface = tf
         tvLivedPercent.typeface = tf
@@ -72,7 +88,12 @@ class ResultActivity : AppCompatActivity() {
                 val xOnLifeLine = ivLifeLine.width * daysLived / 25550
                 val endX = startX + xOnLifeLine - ivMarker.width / 2
 
-                ivMarker.animate().x(endX).setInterpolator(AnticipateOvershootInterpolator()).setDuration(1000).start()
+                ivMarker
+                    .animate()
+                    .x(endX)
+                    .setInterpolator(AnticipateOvershootInterpolator())
+                    .setDuration(1000)
+                    .start()
 
             }
 
@@ -87,17 +108,17 @@ class ResultActivity : AppCompatActivity() {
 
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
-
     }
 
     private fun requestPermissions() {
-        ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE),
-                1)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.INTERNET, Manifest.permission.ACCESS_NETWORK_STATE),
+            1
+        )
     }
 
     private fun getLeftPercentString(daysLived: Int): String {
-
         val percent = "%.3f".format(100 - daysLived.toFloat() / 25550 * 100)
         return String.format(getString(R.string.days_left_percent), percent) + "%"
     }
@@ -107,7 +128,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun getLivedDaysString(daysLived: Int): String {
-        return String.format(getString(R.string.days_lived), daysLived )
+        return String.format(getString(R.string.days_lived), daysLived)
 
     }
 

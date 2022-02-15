@@ -2,20 +2,18 @@ package ru.tzkt.lifetime.utils
 
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.ComponentName
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.os.Build
-import android.support.v4.app.NotificationCompat
-import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import ru.tzkt.lifetime.R
 import ru.tzkt.lifetime.ResultActivity
-import ru.tzkt.lifetime.service.NotificationService
+import ru.tzkt.lifetime.SendNotificationWorker
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by user on 26.04.2018.
@@ -24,7 +22,7 @@ class Utils {
 
     companion object {
 
-        const val SAVED_DATE_PREF = "SAVED_DATE_PREF"
+        private const val SAVED_DATE_PREF = "SAVED_DATE_PREF"
 
         fun saveDate(ctx: Context, date: Calendar) {
             val preferences = ctx.getSharedPreferences(SAVED_DATE_PREF, MODE_PRIVATE)
@@ -61,42 +59,30 @@ class Utils {
             return (diff / (24 * 60 * 60 * 1000)).toInt()
         }
 
-        fun sendNotification(ctx: Context) {
-            val builder = NotificationCompat.Builder(ctx)
-                    .setSmallIcon(R.drawable.app_icon)
-                    .setAutoCancel(true)
-                    .setContentTitle(ctx.getString(R.string.app_name))
-                    .setContentText(ctx.getString(R.string.minus_one))
+        fun sendNotification(context: Context) {
+            val builder = NotificationCompat.Builder(context, "main")
+                .setSmallIcon(R.drawable.app_icon)
+                .setAutoCancel(true)
+                .setContentTitle(context.getString(R.string.app_name))
+                .setContentText(context.getString(R.string.minus_one))
 
-
-            val intent = Intent(ctx, ResultActivity::class.java)
-            val pendingIntent = PendingIntent.getActivity(ctx, 0, intent, 0)
+            val intent = Intent(context, ResultActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
             builder.setContentIntent(pendingIntent)
 
-            val manager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            manager.notify(1488, builder.build())
+            val manager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.notify(15994, builder.build())
         }
 
-        fun scheduleJob(ctx: Context) {
-            //Create JobScheduler
-            val jobScheduler = ctx.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-            val jobService = ComponentName(ctx.packageName, NotificationService::class.java.name)
-            val jobInfo = JobInfo.Builder(1209, jobService)
+        fun scheduleJob(context: Context) {
+            val request =
+                PeriodicWorkRequestBuilder<SendNotificationWorker>(1, TimeUnit.DAYS)
+                    .build()
 
-            val refreshInterval = 24 * 60 * 60 * 1000L
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                jobInfo.setMinimumLatency(refreshInterval)
-            } else {
-                jobInfo.setPeriodic(refreshInterval)
-            }
-
-            val resultCode = jobScheduler.schedule(jobInfo.build())
-            if (resultCode == JobScheduler.RESULT_SUCCESS) {
-                Log.d("TaskActivity", "Job scheduled!")
-            } else {
-                Log.d("TaskActivity", "Job not scheduled")
-            }
+            WorkManager
+                .getInstance(context)
+                .enqueue(request)
         }
     }
 }

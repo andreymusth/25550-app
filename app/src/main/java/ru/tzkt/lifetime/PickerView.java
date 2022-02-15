@@ -55,6 +55,7 @@ public class PickerView extends View {
 
     private float bounceDistance;
     private boolean isSliding = false;
+    private OnScrollChangedListener onScrollChangedListener;
 
     public PickerView(Context context) {
         this(context, null);
@@ -315,7 +316,6 @@ public class PickerView extends View {
         bounceDistance = 0;
     }
 
-
     public void setDataList(ArrayList<String> dataList) {
         this.dataList.clear();
         this.dataList.addAll(dataList);
@@ -334,11 +334,9 @@ public class PickerView extends View {
         invalidate();
     }
 
-
     public int getCurIndex() {
         return getNowIndex(-offsetIndex);
     }
-
 
     public void moveTo(int index) {
         if (index < 0 || index >= dataList.size() || curIndex == index)
@@ -374,21 +372,17 @@ public class PickerView extends View {
         invalidate();
     }
 
-
     public void moveBy(int offsetIndex) {
         moveTo(getNowIndex(offsetIndex));
     }
 
+    public void setOnScrollChangedListener(OnScrollChangedListener onScrollChangedListener) {
+        this.onScrollChangedListener = onScrollChangedListener;
+    }
 
     public interface OnScrollChangedListener {
         public void onScrollChanged(int curIndex);
 
         public void onScrollFinished(int curIndex);
-    }
-
-    private OnScrollChangedListener onScrollChangedListener;
-
-    public void setOnScrollChangedListener(OnScrollChangedListener onScrollChangedListener) {
-        this.onScrollChangedListener = onScrollChangedListener;
     }
 }

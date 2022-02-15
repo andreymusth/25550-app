@@ -14,23 +14,31 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5626828738405382~1990276979" />
 
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
             android:name=".WelcomeActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreen" />
         <activity
             android:name=".ResultActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreen">
-        </activity>
-        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -39,12 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".service.NotificationService"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>
