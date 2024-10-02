@@ -14,8 +14,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import ru.tzkt.lifetime.utils.Utils
 import java.util.*
 
@@ -25,7 +23,6 @@ class ResultActivity : AppCompatActivity() {
     private val tvLivedPercent: TextView by lazy { findViewById(R.id.tvLivedPercent) }
     private val tvLeftDays: TextView by lazy { findViewById(R.id.tvLeftDays) }
     private val tvLeftPercent: TextView by lazy { findViewById(R.id.tvLeftPercent) }
-    private val adView: AdView by lazy { findViewById(R.id.adView) }
     private val ivMarker: ImageView by lazy { findViewById(R.id.ivMarker) }
     private val ivLifeLine: ImageView by lazy { findViewById(R.id.ivLifeLine) }
     private val flReset: FrameLayout by lazy { findViewById(R.id.flReset) }
@@ -105,9 +102,6 @@ class ResultActivity : AppCompatActivity() {
         flReset.setOnClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
         }
-
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
     }
 
     private fun requestPermissions() {

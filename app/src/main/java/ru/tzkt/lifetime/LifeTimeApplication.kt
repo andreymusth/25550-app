@@ -4,7 +4,6 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
-import com.google.android.gms.ads.MobileAds
 
 /**
  * Created by andrey on 28/04/2018.
@@ -15,7 +14,6 @@ class LifeTimeApplication : Application() {
         super.onCreate()
 
         createNotificationChannel()
-        MobileAds.initialize(this)
     }
 
     private fun createNotificationChannel() {
