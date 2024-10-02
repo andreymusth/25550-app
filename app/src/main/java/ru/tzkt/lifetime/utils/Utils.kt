@@ -67,7 +67,8 @@ class Utils {
                 .setContentText(context.getString(R.string.minus_one))
 
             val intent = Intent(context, ResultActivity::class.java)
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE)
             builder.setContentIntent(pendingIntent)
 
             val manager =
